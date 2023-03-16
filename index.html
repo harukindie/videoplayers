@@ -1,6 +1,3 @@
-<!-- 
-2. implementing video playback controls -->
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,23 +6,47 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Task1</title>
         <link href="//vjs.zencdn.net/7.10.2/video-js.min.css" rel="stylesheet" />
+        <link href="https://unpkg.com/@videojs/themes@1/dist/fantasy/index.css" rel="stylesheet" />
+
+        <style>
+            .player-wrapper {
+                width: 90%;
+                margin: 20px auto;
+                box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+            }
+            .vjs-playback-rate {
+                transform: translateY(12px);
+            }
+            .vjs-theme-fantasy {
+                --vjs-theme-fantasy--primary: #2596be;
+                --vjs-theme-fantasy--secondary: #2596be;
+            }
+            .vjs-control-bar {            
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0)) !important;
+            }
+        </style>
     </head>
 
     <body>
-        <video id="my-video" class="video-js vjs-16-9">
-            <source src="https://bitdash-a.akamaihd.net/content/sintel/sintel.mpd" type="application/dash+xml" />
-        </video>
-        <script src="//vjs.zencdn.net/7.10.2/video.min.js"></script>
+        <div class="player-wrapper">
+            <video id="my-video" class="video-js vjs-16-9 vjs-theme-fantasy">
+                <source src="https://cdn.bitmovin.com/content/assets/art-of-motion-dash-hls-progressive/mpds/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.mpd" type="application/dash+xml" />
+                <!-- <source src="https://bitdash-a.akamaihd.net/content/sintel/sintel.mpd" type="application/dash+xml" /> -->
+            </video>
+        </div>
 
+        <script src="//vjs.zencdn.net/7.10.2/video.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-quality-levels@3.0.0/dist/videojs-contrib-quality-levels.min.js"></script>
-        <script src="//cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
         <script src="https://unpkg.com/@videojs/http-streaming@3.1.0/dist/videojs-http-streaming.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/videojs-http-source-selector@1.1.6/dist/videojs-http-source-selector.min.js"></script>
+        <script src="//cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 var player = videojs("my-video", {
                     autoplay: false,
                     controls: true,
+                    controlBar: {pictureInPictureToggle: false},
+                    playbackRates: [0.5, 1, 1.5, 2],
                     plugins: {
                         httpSourceSelector: {
                             default: "auto"
@@ -37,15 +58,7 @@
                         }
                     }
                 });
-                player.hotkeys();
             });
         </script>
-        <style>
-            .vjs-big-play-button {
-                top: 50% !important;
-                left: 50% !important;
-                transform: translate(-50%,-50%);
-            }
-        </style>
     </body>
 </html>

@@ -10,8 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@videojs/themes": "^1.0.1",
     "grunt": "^1.6.1",
     "grunt-cli": "^1.4.3",
+    "video.js": "^8.0.4",
     "videojs-contrib-quality-levels": "^3.0.0",
     "videojs-font": "^4.1.0",
     "videojs-http-source-selector": "^1.1.6"
