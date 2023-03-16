@@ -1,0 +1,19 @@
+{
+  "name": "task2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "grunt": "^1.6.1",
+    "grunt-cli": "^1.4.3",
+    "videojs-contrib-quality-levels": "^3.0.0",
+    "videojs-font": "^4.1.0",
+    "videojs-http-source-selector": "^1.1.6"
+  }
+}
